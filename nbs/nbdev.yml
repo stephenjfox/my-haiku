@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "my-haiku"
+  site-url: "https://stephenjfox.github.io/my-haiku"
+  description: "The end result from completing the Build your own Haiku tutorial (https://dm-haiku.readthedocs.io/en/latest/notebooks/build_your_own_haiku.html)"
+  repo-branch: master
+  repo-url: "https://github.com/stephenjfox/my-haiku"
