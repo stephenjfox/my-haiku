@@ -14,10 +14,43 @@ pip install my_haiku
 
 ## How to use
 
-Fill me in please! Don’t forget code examples:
-
 ``` python
-1+1
+from my_haiku import basics as basics, basics_with_init as haiku_mini
 ```
 
-    2
+``` python
+def model_predict(x):
+    m = haiku_mini.Linear(4)
+    return m(x)
+
+init, apply = haiku_mini.transform(model_predict)
+```
+
+``` python
+from jax import numpy as jnp
+
+# initializing the model with just 1's for weights
+model_params = init(jnp.ones((5, 5), ))
+```
+
+``` python
+apply(model_params, jnp.full((1,5), 5))
+```
+
+    Array([[-21.917768,  -4.325401,  -4.116453,   4.437202]], dtype=float32)
+
+``` python
+model_params = init(
+    haiku_mini.np.random.normal(size=(5,))
+)
+```
+
+``` python
+apply(model_params, jnp.full((5,5), 5))
+```
+
+    Array([[21.342882, -1.453893, -5.462   ,  7.012759],
+           [21.342882, -1.453893, -5.462   ,  7.012759],
+           [21.342882, -1.453893, -5.462   ,  7.012759],
+           [21.342882, -1.453893, -5.462   ,  7.012759],
+           [21.342882, -1.453893, -5.462   ,  7.012759]], dtype=float32)
